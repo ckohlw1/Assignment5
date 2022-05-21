@@ -29,7 +29,7 @@ public class Tab {
 			System.out.println(tab.get(i));
 			total += tab.get(i).price;
 		}
-		System.out.println("Total: " + total);
+		System.out.println("Total: " + total); 
 	}
 	
 }
