@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 import java.util.Scanner;
-public class Tab {
+public class Tab implements Observer{
 	ArrayList<menuItem> tab = new ArrayList<menuItem>();
 	Orders orders;
 	Menu menu;
@@ -55,5 +55,11 @@ public class Tab {
 			}
 		}
 		//call observer stuff
+	}
+
+	@Override
+	public void nextGroup() {
+		tab.clear();
+		Payed = false;		
 	}
 }

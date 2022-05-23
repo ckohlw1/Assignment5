@@ -13,7 +13,10 @@ public class waitingGroups {
 		}
 	}
 	
-	
+	public Party getNext() {
+		return groups.poll();
+		
+	}
 	public Queue<Party> getQueue() {
 		return this.groups;
 	}
