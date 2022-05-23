@@ -11,50 +11,23 @@ public class testing {
 		waitingGroups waiting = new waitingGroups();
 		Waiter waiter = new Waiter();
 		Party currentParty = waiting.getNext();
+		
 		Command menuDisplay = new MenuDisplayCommand(menu);
 		Command AppDisplay = new AppDisplayCommand(app); //new
 		Command DessDisplay = new DessertDisplayCommand(dess);
 		Command orderSubmit = new SubmitOrderCommand(orders);
 		Command tabDisplay = new DisplayTabCommand(tab);
 		Command payTab = new PayTabCommand(tab);
-
-		invoke.setCommand(AppDisplay);
-		invoke.runCommand();
-
-		invoke.setCommand(orderSubmit);
-		invoke.runCommand();
-		invoke.runCommand();
-		invoke.runCommand();
-
-
-
-		invoke.setCommand(menuDisplay);
-		invoke.runCommand();
-				
-		invoke.setCommand(orderSubmit);
-		invoke.runCommand();
-		invoke.runCommand();
-		invoke.runCommand();
-
-		invoke.setCommand(DessDisplay);
-		invoke.runCommand();
-				
-		invoke.setCommand(orderSubmit);
-		invoke.runCommand();
-		invoke.runCommand();
-		invoke.runCommand();
-		
-		invoke.setCommand(tabDisplay);
-		invoke.runCommand();
-
 		
 		waiter.registerObserver(orders);
 		waiter.registerObserver(tab);
-		
-		waiter.setCommand(0, menuDisplay);
-		waiter.setCommand(1, orderSubmit);
-		waiter.setCommand(2, tabDisplay);
-		waiter.setCommand(3, payTab);
+				
+		waiter.setCommand(0, AppDisplay);
+		waiter.setCommand(1, DessDisplay);
+		waiter.setCommand(2, menuDisplay);
+		waiter.setCommand(3, orderSubmit);
+		waiter.setCommand(4, tabDisplay);
+		waiter.setCommand(5, payTab);
 		
 		for(Party group: waiting.getQueue()) {//for each party
 			for(int i = 0; i < currentParty.members; i++) {//asks each guest what they would like, table size is limited to 4
