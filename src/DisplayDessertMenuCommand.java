@@ -1,23 +1,21 @@
-
-public class MenuDisplayCommand implements Command {
+public class DisplayDessertMenuCommand implements Command {
 	Menu menu;
 	
-	public MenuDisplayCommand(Menu menu) {
+	public DisplayDessertMenuCommand(Menu menu) {
 		this.menu = menu;
 	}
 	
 	@Override
 	public void execute() {
-		System.out.println("Entrees");
+		System.out.println("Desserts");
 		menuItem item;
 		MenuIterator iterator = menu.getAllItemsIterator();
+		
 		while(iterator.hasNext()) {
 			item = iterator.next();
-			if(item.getType() == Menu.MAIN) {
+			if(item.getType() == Menu.DESSERT) {
 				System.out.println(item);
 			}
 		}
-
 	}
-
 }

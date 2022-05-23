@@ -2,10 +2,12 @@
 public class menuItem {
 	int number;
 	String name;
+	int type;
 	double price;
 	
-	public menuItem(int number, String name, double price) {
+	public menuItem(int number, int type,String name, double price) {
 		this.number = number;
+		this.type = type;
 		this.name = name;
 		this.price = price;
 	}
@@ -30,5 +32,9 @@ public class menuItem {
 	
 	public String toString() {
 		return number + ", " + name + " $" + price;
+	}
+	
+	public int getType() {
+		return this.type;
 	}
 }

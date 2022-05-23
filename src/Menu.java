@@ -1,13 +1,14 @@
 import java.util.ArrayList;
+
 public class Menu {
 	private static Menu singletonInstance;
 		ArrayList<menuItem> items = new ArrayList<menuItem>();
 		
-		private Menu() {
-			items.add(new menuItem(1,"Steak",12.99));
-			items.add(new menuItem(2,"Chicken",10.99));
-			items.add(new menuItem(3,"Surf & Turf",16.99));
-		}
+		public static final int APP = 0;
+		public static final int MAIN = 1;
+		public static final int DESSERT = 2;
+		
+		private Menu() {}
 		
 		public static Menu getMenu() {
 			if(singletonInstance == null) {
@@ -25,5 +26,51 @@ public class Menu {
 				System.out.println(items.get(i));
 			}
 		}
+		
+		private class AllItemIterator implements MenuIterator {
+			int position = 0;
+			
+			@Override
+			public boolean hasNext() {
+				if(position >= items.size() || items.get(position) == null) {
+				return false;	
+				}else {
+					return true;
+				}
+			}
+
+			@Override
+			public menuItem next() {
+				menuItem temp = items.get(position);
+				position++;
+				return temp;
+			}
+		}
+		public MenuIterator getAllItemsIterator() {
+			return new AllItemIterator();
+		}
+		private class itemsIterator implements MenuIterator{
+			int position = 0;
+			
+			public itemsIterator(int foodType) {}
+			@Override
+			public boolean hasNext() {
+				if(position > items.size() - 1 || items.get(position) == null) {
+					return false;
+				}else {
+					return true;
+				}
+			}
+
+			@Override
+			public menuItem next() {
+				menuItem temp = items.get(position);
+				position++;
+				return temp;		}
+		}
+		public MenuIterator getItemsIterator(int foodType) {
+			return new itemsIterator(foodType);
+		}
+		
 		
 }
