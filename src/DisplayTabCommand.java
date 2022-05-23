@@ -1,4 +1,3 @@
-
 public class DisplayTabCommand implements Command {
 
 	Tab tab;
