@@ -1,5 +1,5 @@
 import java.util.*;
-public class Orders {
+public class Orders implements Observer{
 	ArrayList<Integer> itemsOrdered = new ArrayList<Integer>();
 	
 	public Orders() {}
@@ -9,6 +9,11 @@ public class Orders {
 		Scanner input = new Scanner(System.in);
 		int num = input.nextInt();
 		itemsOrdered.add(num);
+	}
+
+	@Override
+	public void nextGroup() {
+		itemsOrdered.clear();
 	}
 	
 	
